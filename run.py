@@ -38,3 +38,40 @@ for i in ships:
             ship_cols[-1] = random_col(board)
 print(ship_rows)
 print(ship_cols)
+ship_count = [1]
+
+def printing_stars():
+    print('You have won! ' +'*' * 50)
+    printing_stars()
+for turn in range(no_of_goes):
+    print('Turn ' + str(turn + 1) + ' out of ' + str(no_of_goes))
+    guess_col = int(input("Guess Column: ")) - 1
+    guess_row = int(input("Guess Row: ")) - 1
+    for item in ship_rows:
+        if len(ship_count) == no_of_ships and guess_row == item and guess_col == ship_cols[ship_rows.index(item)]:
+            print("Congratulations! You have won!")
+            board [guess_row][guess_col] = '!'
+            print_board(board)
+            printing_stars()
+
+        elif guess_row == item and guess_col == ship_cols[ship_rows.index(item)]:
+            print ("Congratulations! You've sunk my battleship")
+            board [guess_row][guess_col] = '!'
+            print_board(board)
+            ship_count.append[1]
+            break
+    else:
+        if (guess_row < 0 or guess_row > size_of_board - 1) or (guess_col < 0 or guess_col > size_of_board - 1):
+            print("Aim for water not land")
+
+        elif board[guess_row][guess_col] == "X" or board[guess_row][guess_col] == "!":
+            print("You can only fire at a spot once, try again")
+            turn =- 1
+        
+        else:
+            print("Missile overboard, try again")
+            board[guess_row][guess_col] = "X"
+        print_board(board)
+        if turn == (no_of_goes - 1):
+            print("Game Over, better luck next time")
+            break
