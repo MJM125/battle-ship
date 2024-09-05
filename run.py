@@ -8,3 +8,14 @@ if size_of_board > 50:
     print("The board will be too big to fit on the screen (max 50)")
     size_of_board = int(input('Choose a more sensible number: '))
 no_of_ships = int(input("Finally, how many ships would you like?: "))
+board = []
+
+for x in range(size_of_board):
+    board.append(["O"] * size_of_board)
+
+def print_board(board):
+    for row in board:
+        print ("  ".join(row))
+print_board(board)
+ship_rows = []
+ship_cols = []
